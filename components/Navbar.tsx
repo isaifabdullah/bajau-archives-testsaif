@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Waves } from 'lucide-react';
+import { Waves, Menu, X } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -66,7 +67,41 @@ const Navbar: React.FC = () => {
               Universiti Malaya
             </div>
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden flex items-center justify-center"
+          >
+            {mobileMenuOpen ? (
+              <X className={`${textColor} transition-colors`} size={24} />
+            ) : (
+              <Menu className={`${textColor} transition-colors`} size={24} />
+            )}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-slate-950/95 backdrop-blur-xl border-b border-white/5 mt-2">
+            <div className="px-6 py-4 space-y-3">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`block text-[11px] uppercase font-bold tracking-[0.15em] transition-all py-3 px-4 rounded-lg ${
+                    isActive(link.path) 
+                      ? 'text-teal-500 bg-teal-500/10' 
+                      : 'text-white opacity-70 hover:opacity-100 hover:bg-white/5'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
