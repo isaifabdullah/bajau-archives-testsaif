@@ -23,6 +23,8 @@ const Repository: React.FC = () => {
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [newSong, setNewSong] = useState<Partial<Song>>({
@@ -148,6 +150,21 @@ const Repository: React.FC = () => {
     }
   };
 
+  const formatTime = (seconds: number) => {
+    if (!seconds || isNaN(seconds)) return '0:00';
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTime = parseFloat(e.target.value);
+    setCurrentTime(newTime);
+    if (audioRef.current) {
+      audioRef.current.currentTime = newTime;
+    }
+  };
+
   // --- Search Logic ---
   const filteredSongs = songs.filter(song => {
     const q = searchQuery.toLowerCase();
@@ -166,7 +183,7 @@ const Repository: React.FC = () => {
             <div className="w-20 h-20 bg-slate-900 rounded-3xl flex items-center justify-center mx-auto mb-10 animate-float shadow-2xl shadow-slate-900/10">
               <Lock className="text-white" size={30} />
             </div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Restricted Archive</h2>
+            <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Restricted Waters</h2>
             <p className="text-slate-500 mb-10 leading-relaxed font-medium">
               This repository is protected to ensure cultural preservation. Please enter your access key to proceed.
             </p>
@@ -196,7 +213,12 @@ const Repository: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-40 pb-40 bg-white">
-      <audio ref={audioRef} onEnded={() => setIsPlaying(false)} />
+      <audio 
+        ref={audioRef} 
+        onEnded={() => setIsPlaying(false)}
+        onTimeUpdate={(e) => setCurrentTime(e.currentTarget.currentTime)}
+        onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
+      />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-10">
@@ -339,22 +361,40 @@ const Repository: React.FC = () => {
       {/* Global Player Bar */}
       {currentSong && !isDeleteMode && (
         <div className="fixed bottom-10 left-6 right-6 z-50 animate-slideUp">
-          <div className="max-w-4xl mx-auto glass-card rounded-[2.5rem] p-5 shadow-2xl border border-white/50 flex items-center gap-6">
-            <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center text-teal-400">
-              <Music size={20} className={isPlaying ? 'animate-pulse' : ''} />
-            </div>
-            <div className="flex-grow">
-              <h4 className="text-slate-900 font-bold tracking-tight text-sm">{currentSong.title}</h4>
-              <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{currentSong.performer}</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <Volume2 className="text-slate-300 hidden sm:block" size={18} />
+          <div className="max-w-4xl mx-auto glass-card rounded-[2.5rem] p-6 shadow-2xl border border-white/50">
+            <div className="flex items-center gap-6 mb-4">
+              <div className="w-14 h-14 bg-slate-900 rounded-2xl flex items-center justify-center text-teal-400 flex-shrink-0">
+                <Music size={20} className={isPlaying ? 'animate-pulse' : ''} />
+              </div>
+              <div className="flex-grow">
+                <h4 className="text-slate-900 font-bold tracking-tight text-sm">{currentSong.title}</h4>
+                <p className="text-[10px] text-slate-500 font-bold uppercase tracking-widest">{currentSong.performer}</p>
+              </div>
               <button
                 onClick={() => togglePlay(currentSong)}
-                className="w-12 h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center hover:bg-teal-500 transition-colors"
+                className="w-12 h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center hover:bg-teal-500 transition-colors flex-shrink-0"
               >
                 {isPlaying ? <Pause size={18} /> : <Play fill="currentColor" size={18} className="ml-0.5" />}
               </button>
+            </div>
+            
+            {/* Slider and Time Display */}
+            <div className="space-y-2">
+              <input
+                type="range"
+                min="0"
+                max={duration || 0}
+                value={currentTime}
+                onChange={handleSliderChange}
+                className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-slate-900 hover:accent-teal-500 transition-all"
+                style={{
+                  background: `linear-gradient(to right, rgb(30,41,59) 0%, rgb(30,41,59) ${(currentTime / duration) * 100}%, rgb(226,232,240) ${(currentTime / duration) * 100}%, rgb(226,232,240) 100%)`
+                }}
+              />
+              <div className="flex justify-between text-[10px] font-bold text-slate-500 uppercase tracking-widest px-1">
+                <span>{formatTime(currentTime)}</span>
+                <span>{formatTime(duration)}</span>
+              </div>
             </div>
           </div>
         </div>
