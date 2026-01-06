@@ -16,7 +16,6 @@ const Home: React.FC = () => {
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-sky-950/70 via-sky-900/50 to-teal-950/80 z-10" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60 z-20" />
           
           <img 
             src={HOME_IMAGES.HERO_BG} 
@@ -25,17 +24,17 @@ const Home: React.FC = () => {
           />
         </div>
 
-        <div className="relative z-30 max-w-6xl mx-auto px-6 text-center">
+        <div className="relative z-20 max-w-6xl mx-auto px-6 text-center">
           <div className="mb-8 inline-block animate-float">
-            <span className="px-5 py-2.5 bg-white/10 backdrop-blur-xl rounded-full text-[10px] font-bold text-white uppercase tracking-[0.3em] border border-white/20 shadow-2xl drop-shadow-lg">
+            <span className="px-5 py-2.5 bg-white/10 backdrop-blur-xl rounded-full text-[10px] font-bold text-white uppercase tracking-[0.3em] border border-white/20">
               Digital Heritage Preservation
             </span>
           </div>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-white mb-8 leading-[0.95] tracking-tight-heading drop-shadow-2xl" style={{textShadow: '0 10px 30px rgba(0,0,0,0.8), 0 4px 6px rgba(0,0,0,0.7)'}}>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-white mb-8 leading-[0.95] tracking-tight-heading">
             Voices of the <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-sky-200 drop-shadow-2xl" style={{textShadow: '0 10px 30px rgba(0,0,0,0.8)'}}>Floating World</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-sky-200">Floating World</span>
           </h1>
-          <p className="text-lg md:text-xl text-sky-50/90 mb-12 max-w-2xl mx-auto font-medium leading-relaxed tracking-wide drop-shadow-lg" style={{textShadow: '0 4px 12px rgba(0,0,0,0.7)'}}>
+          <p className="text-lg md:text-xl text-sky-50/80 mb-12 max-w-2xl mx-auto font-medium leading-relaxed tracking-wide">
             A secure digital sanctuary for the songs, stories, and rhythms of the Bajau Laut community. Bridging university coursework with indigenous soul.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -48,7 +47,7 @@ const Home: React.FC = () => {
             </Link>
             <Link 
               to="/ethics" 
-              className="text-white font-bold hover:text-teal-300 transition-colors py-5 border-b-2 border-transparent hover:border-teal-300 tracking-wider drop-shadow-lg" style={{textShadow: '0 2px 8px rgba(0,0,0,0.6)'}}
+              className="text-white font-bold hover:text-teal-300 transition-colors py-5 border-b-2 border-transparent hover:border-teal-300 tracking-wider"
             >
               Access & Protocol
             </Link>
