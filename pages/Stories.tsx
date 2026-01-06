@@ -26,7 +26,7 @@ const Stories: React.FC = () => {
   });
 
   useEffect(() => {
-    const authRole = localStorage.getItem('bajau_access_role');
+    const authRole = sessionStorage.getItem('bajau_access_role');
     setIsAdmin(authRole === 'admin');
     loadData();
   }, []);
@@ -50,7 +50,7 @@ const Stories: React.FC = () => {
     e.preventDefault();
     if (adminPassword === ADMIN_KEY) {
       setIsAdmin(true);
-      localStorage.setItem('bajau_access_role', 'admin');
+      sessionStorage.setItem('bajau_access_role', 'admin');
       setAuthError('');
       setIsAuthModalOpen(false);
       setIsModalOpen(true);
