@@ -32,7 +32,7 @@ const Repository: React.FC = () => {
   });
 
   useEffect(() => {
-    const authRole = localStorage.getItem('bajau_access_role');
+    const authRole = sessionStorage.getItem('bajau_access_role');
     if (authRole === 'admin') {
       setIsAuthorized(true);
       setIsAdmin(true);
@@ -55,12 +55,12 @@ const Repository: React.FC = () => {
     if (password === ADMIN_KEY) {
       setIsAuthorized(true);
       setIsAdmin(true);
-      localStorage.setItem('bajau_access_role', 'admin');
+      sessionStorage.setItem('bajau_access_role', 'admin');
       setError('');
     } else if (password === ACCESS_KEY) {
       setIsAuthorized(true);
       setIsAdmin(false);
-      localStorage.setItem('bajau_access_role', 'viewer');
+      sessionStorage.setItem('bajau_access_role', 'viewer');
       setError('');
     } else {
       setError('Invalid credentials.');
@@ -68,7 +68,7 @@ const Repository: React.FC = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('bajau_access_role');
+    sessionStorage.removeItem('bajau_access_role');
     setIsAuthorized(false);
     setIsAdmin(false);
     setIsDeleteMode(false);
