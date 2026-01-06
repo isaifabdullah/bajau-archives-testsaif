@@ -113,16 +113,16 @@ const Stories: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pt-40 pb-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <div className="min-h-screen pt-32 sm:pt-40 pb-16 sm:pb-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <div className="text-center mb-32 relative">
           <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-slate-50 text-slate-900 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-10 border border-slate-100">
             <BookOpen size={14} className="text-teal-500" />
             <span>Oral Histories</span>
             {isAdmin && <ShieldCheck size={14} className="text-teal-500 ml-2" />}
           </div>
-          <h1 className="text-7xl md:text-8xl font-extrabold text-slate-950 mb-8 tracking-tight-heading">Community</h1>
-          <p className="text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed mb-12">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-extrabold text-slate-950 mb-6 sm:mb-8 tracking-tight-heading">Community</h1>
+          <p className="text-base sm:text-lg md:text-xl text-slate-500 max-w-2xl mx-auto font-medium leading-relaxed mb-8 sm:mb-12">
             The contexts behind the rhythms. Explore the shared memories of the Sama-Bajau people.
           </p>
 
@@ -163,7 +163,7 @@ const Stories: React.FC = () => {
             <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Accessing Cloud Archive...</p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 gap-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-16 md:gap-20">
             {stories.map((story) => (
               <article
                 key={story.id}

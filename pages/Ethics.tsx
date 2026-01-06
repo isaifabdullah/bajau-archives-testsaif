@@ -4,20 +4,20 @@ import { ShieldCheck, EyeOff, Scale, Users, Waves } from 'lucide-react';
 
 const Ethics: React.FC = () => {
   return (
-    <div className="min-h-screen pt-40 pb-24 bg-white">
-      <div className="max-w-5xl mx-auto px-6">
+    <div className="min-h-screen pt-32 sm:pt-40 pb-16 sm:pb-24 bg-white">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-slate-50 text-slate-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-10 border border-slate-100">
           <ShieldCheck size={14} className="text-teal-500" />
           <span>Research Protocol</span>
         </div>
-        <h1 className="text-7xl md:text-8xl font-extrabold text-slate-900 mb-12 tracking-tight-heading">Ethics</h1>
+        <h1 className="text-4xl sm:text-6xl md:text-8xl font-extrabold text-slate-900 mb-8 sm:mb-12 tracking-tight-heading">Ethics</h1>
         
         <div className="space-y-24">
-          <p className="text-xl md:text-2xl text-slate-500 leading-relaxed font-medium max-w-4xl">
+          <p className="text-lg sm:text-xl md:text-2xl text-slate-500 leading-relaxed font-medium max-w-4xl">
             The Bajau Archives is a <strong className="text-slate-900 font-bold">closed digital repository</strong>. This ensures that indigenous cultural expressions are protected from exploitation.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
             <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 hover:border-teal-200 transition-all group">
               <div className="w-14 h-14 bg-white text-teal-600 rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-teal-500 group-hover:text-white transition-all duration-500">
                 <Waves size={24} />

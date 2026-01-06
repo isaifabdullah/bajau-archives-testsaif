@@ -24,30 +24,30 @@ const Home: React.FC = () => {
           />
         </div>
 
-        <div className="relative z-20 max-w-6xl mx-auto px-6 text-center">
+        <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 text-center">
           <div className="mb-8 inline-block animate-float">
-            <span className="px-5 py-2.5 bg-white/10 backdrop-blur-xl rounded-full text-[10px] font-bold text-white uppercase tracking-[0.3em] border border-white/20">
+            <span className="px-4 sm:px-5 py-2 sm:py-2.5 bg-white/10 backdrop-blur-xl rounded-full text-[9px] sm:text-[10px] font-bold text-white uppercase tracking-[0.2em] sm:tracking-[0.3em] border border-white/20">
               Digital Heritage Preservation
             </span>
           </div>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold text-white mb-8 leading-[0.95] tracking-tight-heading">
+          <h1 className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-extrabold text-white mb-6 sm:mb-8 leading-[0.95] tracking-tight-heading">
             Voices of the <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-300 to-sky-200">Floating World</span>
           </h1>
-          <p className="text-lg md:text-xl text-sky-50/80 mb-12 max-w-2xl mx-auto font-medium leading-relaxed tracking-wide">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-sky-50/80 mb-8 sm:mb-12 max-w-2xl mx-auto font-medium leading-relaxed tracking-wide">
             A secure digital sanctuary for the songs, stories, and rhythms of the Bajau Laut community. Bridging university coursework with indigenous soul.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="flex flex-col gap-4 sm:flex-row items-center justify-center sm:gap-6">
             <Link 
               to="/repository" 
-              className="group bg-white text-sky-950 px-10 py-5 rounded-2xl font-bold transition-all hover:bg-teal-400 hover:text-white shadow-2xl flex items-center gap-2"
+              className="w-full sm:w-auto group bg-white text-sky-950 px-8 sm:px-10 py-4 sm:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base transition-all hover:bg-teal-400 hover:text-white shadow-2xl flex items-center justify-center gap-2"
             >
               Explore Archive
               <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
             </Link>
             <Link 
               to="/ethics" 
-              className="text-white font-bold hover:text-teal-300 transition-colors py-5 border-b-2 border-transparent hover:border-teal-300 tracking-wider"
+              className="w-full sm:w-auto text-white font-bold hover:text-teal-300 transition-colors py-4 sm:py-5 px-8 sm:px-0 border-b-2 border-transparent hover:border-teal-300 tracking-wider text-sm sm:text-base text-center sm:text-left"
             >
               Access & Protocol
             </Link>
@@ -60,11 +60,11 @@ const Home: React.FC = () => {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-32 md:py-48 relative bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+      <section className="py-16 sm:py-32 md:py-48 relative bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 lg:gap-20 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-8 leading-[1.1] tracking-tight-heading">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 sm:mb-8 leading-[1.1] tracking-tight-heading">
                 More than music. <br />
                 <span className="text-teal-600">A seafaring soul.</span>
               </h2>

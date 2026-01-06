@@ -5,22 +5,22 @@ import { Mail, GraduationCap, ChevronRight, BookOpen, Cpu, Camera } from 'lucide
 
 const Team: React.FC = () => {
   return (
-    <div className="min-h-screen pt-40 pb-32 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <div className="min-h-screen pt-32 sm:pt-40 pb-20 sm:pb-32 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         {/* Header Section */}
         <div className="text-center mb-24">
           <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-slate-50 text-slate-900 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] mb-10 border border-slate-100">
             <GraduationCap size={14} className="text-teal-500" />
             <span>Universiti Malaya • WIX2001</span>
           </div>
-          <h1 className="text-6xl md:text-8xl font-extrabold text-slate-900 mb-8 tracking-tight-heading">Our Collective</h1>
-          <p className="text-lg md:text-xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-extrabold text-slate-900 mb-6 sm:mb-8 tracking-tight-heading">Our Collective</h1>
+          <p className="text-base sm:text-lg md:text-xl text-slate-500 max-w-3xl mx-auto font-medium leading-relaxed">
             A collaborative group of 9 student members exploring the intersection of maritime heritage and digital storytelling for the WIX2001 THINKING AND COMMUNICATION SKILLS module.
           </p>
         </div>
 
         {/* Group Mission Statement */}
-        <div className="mb-32 grid lg:grid-cols-3 gap-12 border-y border-slate-100 py-20">
+        <div className="mb-16 sm:mb-32 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 border-y border-slate-100 py-12 sm:py-20">
           <div className="space-y-4">
             <div className="flex items-center gap-3 text-teal-600 mb-2">
               <BookOpen size={20} />
@@ -54,7 +54,7 @@ const Team: React.FC = () => {
         </div>
 
         {/* Members Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {TEAM_MEMBERS.map((member, idx) => (
             <div 
               key={idx} 

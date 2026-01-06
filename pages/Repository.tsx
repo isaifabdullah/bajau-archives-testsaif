@@ -212,7 +212,7 @@ const Repository: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen pt-40 pb-40 bg-white">
+    <div className="min-h-screen pt-32 sm:pt-40 pb-32 sm:pb-40 bg-white">
       <audio 
         ref={audioRef} 
         onEnded={() => setIsPlaying(false)}
@@ -220,64 +220,65 @@ const Repository: React.FC = () => {
         onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
       />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="mb-12 sm:mb-16 flex flex-col gap-6 sm:gap-10 lg:gap-0 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <div className="inline-flex items-center gap-3 text-teal-600 font-bold text-[10px] uppercase tracking-[0.2em] mb-6">
-              <Waves size={16} />
+            <div className="inline-flex items-center gap-2 sm:gap-3 text-teal-600 font-bold text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-4 sm:mb-6">
+              <Waves size={14} />
               <span>{isAdmin ? 'ADMINISTRATOR ACCESS' : 'RESEARCHER ACCESS'}</span>
-              {isAdmin && <ShieldCheck size={14} className="text-teal-500" />}
+              {isAdmin && <ShieldCheck size={12} className="text-teal-500" />}
             </div>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 mb-4 tracking-tight-heading">Repository</h1>
-            <p className="text-slate-500 font-medium">Digital collection of Sama-Bajau audio heritage.</p>
+            <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold text-slate-900 mb-2 sm:mb-4 tracking-tight-heading">Repository</h1>
+            <p className="text-sm sm:text-base text-slate-500 font-medium">Digital collection of Sama-Bajau audio heritage.</p>
           </div>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
             {isAdmin && (
               <>
                 <button
                   onClick={() => setIsModalOpen(true)}
-                  className="px-8 py-4 bg-teal-500 text-white rounded-2xl font-bold text-[11px] uppercase tracking-[0.15em] flex items-center gap-3 hover:bg-teal-600 transition-all shadow-xl shadow-teal-500/20"
+                  className="px-6 sm:px-8 py-3 sm:py-4 bg-teal-500 text-white rounded-xl sm:rounded-2xl font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.15em] flex items-center justify-center sm:justify-start gap-2 sm:gap-3 hover:bg-teal-600 transition-all shadow-lg sm:shadow-xl shadow-teal-500/20"
                 >
-                  <Plus size={18} />
-                  Add Recording
+                  <Plus size={16} className="sm:block" />
+                  <span>Add Recording</span>
                 </button>
                 <button
                   onClick={() => setIsDeleteMode(!isDeleteMode)}
-                  className={`px-8 py-4 rounded-2xl font-bold text-[11px] uppercase tracking-[0.15em] flex items-center gap-3 transition-all border shadow-lg ${isDeleteMode
+                  className={`px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.15em] flex items-center justify-center gap-2 sm:gap-3 transition-all border shadow-lg ${isDeleteMode
                     ? 'bg-rose-500 text-white border-rose-500 shadow-rose-500/20'
                     : 'bg-white text-slate-600 border-slate-200 hover:border-rose-300 hover:text-rose-500'
                     }`}
                 >
-                  <Trash2 size={18} />
-                  {isDeleteMode ? 'Finish Removing' : 'Remove Recording'}
+                  <Trash2 size={16} />
+                  <span className="hidden sm:inline">{isDeleteMode ? 'Finish Removing' : 'Remove Recording'}</span>
+                  <span className="sm:hidden">{isDeleteMode ? 'Done' : 'Remove'}</span>
                 </button>
               </>
             )}
-            <button onClick={handleLogout} className="px-8 py-4 bg-white border border-slate-200 text-slate-900 rounded-2xl font-bold text-[11px] uppercase tracking-[0.15em] flex items-center gap-3 hover:bg-slate-50 transition-all">
-              <LogOut size={18} />
-              End Session
+            <button onClick={handleLogout} className="px-6 sm:px-8 py-3 sm:py-4 bg-white border border-slate-200 text-slate-900 rounded-xl sm:rounded-2xl font-bold text-[10px] sm:text-[11px] uppercase tracking-[0.15em] flex items-center justify-center gap-2 sm:gap-3 hover:bg-slate-50 transition-all">
+              <LogOut size={16} />
+              <span>End Session</span>
             </button>
           </div>
         </div>
 
         {/* Search Bar Section */}
-        <div className="mb-16 relative">
-          <div className="absolute inset-y-0 left-8 flex items-center pointer-events-none">
-            <Search className="text-slate-400" size={20} />
+        <div className="mb-12 sm:mb-16 relative">
+          <div className="absolute inset-y-0 left-6 flex items-center pointer-events-none">
+            <Search className="text-slate-400" size={18} />
           </div>
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search by title, performer, or genre..."
-            className="w-full bg-slate-50 border border-slate-100 rounded-[2rem] py-6 pl-16 pr-8 text-lg font-medium text-slate-900 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white transition-all shadow-sm"
+            className="w-full bg-slate-50 border border-slate-100 rounded-[1.5rem] sm:rounded-[2rem] py-4 sm:py-6 pl-14 sm:pl-16 pr-6 sm:pr-8 text-sm sm:text-lg font-medium text-slate-900 focus:outline-none focus:ring-4 focus:ring-teal-500/10 focus:bg-white transition-all shadow-sm"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute inset-y-0 right-8 flex items-center text-slate-400 hover:text-slate-900 transition-colors"
+              className="absolute inset-y-0 right-6 flex items-center text-slate-400 hover:text-slate-900 transition-colors"
             >
-              <X size={20} />
+              <X size={18} />
             </button>
           )}
         </div>
@@ -295,47 +296,50 @@ const Repository: React.FC = () => {
             <p className="text-slate-400 font-bold uppercase tracking-widest text-xs">Accessing Cloud Archive...</p>
           </div>
         ) : filteredSongs.length > 0 ? (
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {filteredSongs.map((song) => (
-              <div key={song.id} className={`group relative overflow-hidden bg-white rounded-[2.5rem] border p-8 transition-all hover:shadow-2xl ${isDeleteMode ? 'border-rose-200 hover:border-rose-400' :
+              <div key={song.id} className={`group relative overflow-hidden bg-white rounded-[1.5rem] sm:rounded-[2.5rem] border p-4 sm:p-8 transition-all hover:shadow-2xl ${isDeleteMode ? 'border-rose-200 hover:border-rose-400' :
                 currentSong?.id === song.id ? 'border-teal-500 ring-4 ring-teal-500/5' : 'border-slate-100 hover:border-teal-100'
                 }`}>
-                <div className="relative z-10 flex flex-col sm:flex-row gap-8 items-start sm:items-center">
-                  <div className={`w-32 h-32 rounded-[2rem] flex-shrink-0 flex items-center justify-center transition-all duration-700 ${isDeleteMode ? 'bg-rose-50 text-rose-300' : 'bg-slate-50 text-slate-300 group-hover:text-teal-500 group-hover:bg-teal-50'
+                <div className="relative z-10 flex flex-col gap-4 sm:gap-8 items-start">
+                  <div className={`w-24 sm:w-32 h-24 sm:h-32 rounded-[1.5rem] sm:rounded-[2rem] flex-shrink-0 flex items-center justify-center transition-all duration-700 ${isDeleteMode ? 'bg-rose-50 text-rose-300' : 'bg-slate-50 text-slate-300 group-hover:text-teal-500 group-hover:bg-teal-50'
                     }`}>
-                    <Music size={40} />
+                    <Music size={32} className="sm:block hidden" />
+                    <Music size={24} className="sm:hidden block" />
                   </div>
 
-                  <div className="flex-grow">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <span className={`text-[10px] font-bold uppercase tracking-[0.15em] mb-1 block ${isDeleteMode ? 'text-rose-400' : 'text-teal-600'}`}>
+                  <div className="flex-grow w-full">
+                    <div className="flex justify-between items-start mb-3 sm:mb-4 gap-4">
+                      <div className="flex-grow">
+                        <span className={`text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] mb-1 block ${isDeleteMode ? 'text-rose-400' : 'text-teal-600'}`}>
                           {song.genre}
                         </span>
-                        <h3 className="text-2xl font-bold text-slate-900 tracking-tight">{song.title}</h3>
-                        <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">{song.performer}</p>
+                        <h3 className="text-lg sm:text-2xl font-bold text-slate-900 tracking-tight leading-tight">{song.title}</h3>
+                        <p className="text-[11px] sm:text-xs text-slate-400 font-semibold uppercase tracking-wider">{song.performer}</p>
                       </div>
 
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 flex-shrink-0">
                         {isDeleteMode ? (
                           <button
                             onClick={() => handleRemoveSong(song.id, song.audioUrl)}
-                            className="w-14 h-14 bg-rose-500 text-white rounded-2xl flex items-center justify-center hover:bg-rose-600 hover:scale-110 active:scale-95 transition-all shadow-lg shadow-rose-500/20"
+                            className="w-11 sm:w-14 h-11 sm:h-14 bg-rose-500 text-white rounded-lg sm:rounded-2xl flex items-center justify-center hover:bg-rose-600 hover:scale-110 active:scale-95 transition-all shadow-lg shadow-rose-500/20"
                             title="Remove from Archive"
                           >
-                            <Trash2 size={24} />
+                            <Trash2 size={20} className="sm:block hidden" />
+                            <Trash2 size={16} className="sm:hidden block" />
                           </button>
                         ) : (
                           <button
                             onClick={() => togglePlay(song)}
-                            className={`w-14 h-14 rounded-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-lg ${currentSong?.id === song.id && isPlaying ? 'bg-teal-500 text-white' : 'bg-slate-900 text-white hover:bg-teal-500'}`}
+                            className={`w-11 sm:w-14 h-11 sm:h-14 rounded-lg sm:rounded-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all shadow-lg ${currentSong?.id === song.id && isPlaying ? 'bg-teal-500 text-white' : 'bg-slate-900 text-white hover:bg-teal-500'}`}
                           >
-                            {currentSong?.id === song.id && isPlaying ? <Pause size={24} /> : <Play fill="currentColor" size={24} className="ml-0.5" />}
+                            {currentSong?.id === song.id && isPlaying ? <Pause size={18} className="sm:block hidden" /> : <Play fill="currentColor" size={18} className="ml-0.5 hidden sm:block" />}
+                            {currentSong?.id === song.id && isPlaying ? <Pause size={14} className="sm:hidden block" /> : <Play fill="currentColor" size={14} className="ml-0.5 sm:hidden block" />}
                           </button>
                         )}
                       </div>
                     </div>
-                    <p className="text-slate-500 text-sm font-medium leading-relaxed line-clamp-2">{song.description}</p>
+                    <p className="text-xs sm:text-sm font-medium text-slate-500 leading-relaxed line-clamp-2">{song.description}</p>
                   </div>
                 </div>
               </div>

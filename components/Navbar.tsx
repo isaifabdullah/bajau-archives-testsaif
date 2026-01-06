@@ -83,16 +83,16 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-slate-950/95 backdrop-blur-xl border-b border-white/5 mt-2">
-            <div className="px-6 py-4 space-y-3">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-slate-950/98 backdrop-blur-xl border-b border-white/5 mt-2 rounded-2xl mx-2 shadow-2xl overflow-hidden">
+            <div className="px-4 sm:px-6 py-4 space-y-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block text-[11px] uppercase font-bold tracking-[0.15em] transition-all py-3 px-4 rounded-lg ${
+                  className={`block text-[11px] uppercase font-bold tracking-[0.15em] transition-all py-4 px-6 rounded-xl ${
                     isActive(link.path) 
-                      ? 'text-teal-500 bg-teal-500/10' 
+                      ? 'text-teal-400 bg-teal-500/20 border border-teal-500/30' 
                       : 'text-white opacity-70 hover:opacity-100 hover:bg-white/5'
                   }`}
                 >
